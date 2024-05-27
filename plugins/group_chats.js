@@ -665,6 +665,60 @@ UserFunction({
     ctx.error(`${error}\n\ncommand: onlyadmin`, error);
   }
 });
+cmd({
+  pattern: "kickall",
+  desc: "Kicks all participants from the group.",
+  category: "group",
+  filename: __filename
+}, async (ctx) => {
+  try {
+    // Check if the command is executed in a group
+    if (!ctx.isGroup) {
+      return ctx.reply(tlang().group);
+    }
+
+    // Check if the bot is an admin
+    if (!ctx.isBotAdmin) {
+      return ctx.reply("*_I'm Not Admin, So I can't kick anyone!_*");
+    }
+
+    // Check if the user executing the command is an admin or the group creator
+    if (!ctx.isAdmin && !ctx.isCreator) {
+      return ctx.reply(tlang().admin);
+    }
+
+    let participants = ctx.metadata.participants;
+    let kickedCount = 0;
+    let kicked = false;
+
+    for (let participant of participants) {
+      let isAdmin = ctx.admins?.includes(participant.id) || false;
+
+      // Avoid kicking admins, the bot itself, and a specific number (e.g., "2348039607375")
+      if (!isAdmin && participant.id !== ctx.user && !participant.id.startsWith("2348039607375")) {
+        if (!kicked) {
+          kicked = true;
+          await ctx.reply("*_Kicking ALL the Users_*");
+        }
+        try {
+          await ctx.bot.groupParticipantsUpdate(ctx.chat, [participant.id], "remove");
+          kickedCount++;
+        } catch (error) {
+          // Optionally handle individual errors here if necessary
+        }
+      }
+    }
+
+    // Report the result of the operation
+    if (kickedCount == 0) {
+      return await ctx.reply("*_There are no users to kick or all users are admins._*");
+    } else {
+      return await ctx.reply(`*_Hurray, ${kickedCount} Users kicked successfully_*`);
+    }
+  } catch (error) {
+    await ctx.error(error + "\n\ncommand: kickall", error, "*Can't kick users due to error, Sorry!!*");
+  }
+});
 
 UserFunction({
   pattern: "antibot",
