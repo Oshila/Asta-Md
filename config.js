@@ -62,7 +62,7 @@ module.exports = {
 
   HANDLERS: process.env.PREFIX  || "/",
   BRANCH  : process.env.BRANCH  || "main",
-  VERSION : process.env.VERSION || "3.5.0",
+  VERSION : process.env.VERSION || "𝟯.𝟱.𝟬",
   caption : global.caption || "αѕтα-м∂ 2024" , 
  
   author : process.env.PACK_AUTHER|| "αѕтяσ",
