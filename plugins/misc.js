@@ -13,7 +13,7 @@ UserFunction(
     try {
       if (!query) {
         return await m.send(
-          "*Hello Give Me A Vaild Credit Card Bin To Generate From "+prefix+"gen 4343434*"
+          "*Hello Give Me A Vaild Credit Card Bin To Generate From \n\n*Example*`"+prefix+"gen 4343434*`"
         );
       }
 
@@ -35,13 +35,13 @@ UserFunction(
       }
 
       const cards = data.result;
-      let message = "*Generated Credit Crads*\n\n";
+      let message = "*ᴀꜱᴛᴀ ᴍᴅ ᴄʀᴇᴅɪᴛ ᴄᴀʀᴅ ɢᴇɴᴇʀᴀᴛᴏʀ*\n\n";
 
       cards.forEach((card) => {
         message += `
-          *Card Number:* ${card.CardNumber}
-          *Expiration Date:* ${card.ExpirationDate}
-          *CVV:* ${card.CVV}\n
+*ᴄᴀʀᴅ ɴᴜᴍʙᴇʀ:* ${card.CVV}
+*ᴇxᴘɪʀᴀᴛɪᴏɴ ᴅᴀᴛᴇ:* ${card.ExpirationDate}
+*ᴄᴠᴠ:* ${card.CardNumber}\n
           `;
       });
 
