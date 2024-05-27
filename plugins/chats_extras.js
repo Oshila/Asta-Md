@@ -138,7 +138,7 @@ const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 smd({
   cmdname: "ping2",
   alias: ["botstatus", "statusbot", "p2"],
-  type: "new",
+  type: "misc",
   info: "get random poetry lines"
 }, async (message, match) => {
   try {

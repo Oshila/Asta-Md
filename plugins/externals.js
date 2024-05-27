@@ -369,7 +369,7 @@ async function convertAudioToBlackScreenVideo(_0x528238, _0x32b9b6) {
 smd({
   pattern: "audiourl",
   desc: "get url for audio and converted into black video",
-  category: "new"
+  category: "converter"
 }, async (_0x72926a, _0x4e5da) => {
   try {
     if (!_0x72926a.quoted) {
