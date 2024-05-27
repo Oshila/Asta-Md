@@ -13,7 +13,7 @@ UserFunction(
     try {
       if (!query) {
         return await m.send(
-          "*Hello Give Me A Vaild Credit Card Bin To Generate From \n\n*Example*`"+prefix+"gen 4343434*`"
+          "*Hello Give Me A Vaild Credit Card Bin To Generate From*\n\n*Example:* *`"+prefix+"gen 4343434`*"
         );
       }
 
