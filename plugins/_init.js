@@ -195,12 +195,7 @@ AdminFunction.cmd(
   },
   async (token) => {
     try {
-      token.reply(
-        "*`Bot Alive Since " +
-          tlang().title +
-          ": " +
-          runtime(process.uptime()) +
-          "`*"
+      token.reply("*`Bot Alive Since: " +runtime(process.uptime()) +"`*"
       );
     } catch (error) {
       await token.error(error + "\n\ncommand : uptime", error, false);
@@ -508,36 +503,18 @@ AdminFunction.cmd(
       const currentTime = message.time;
       const currentDate = message.date;
       let BotInfoOnMenu =
-        MenuTopHeader +
-        "\n" +
-        MenuSideHeader +
-        " ＵＳＥＲ:- " +
-        ownername +
-        "\n" +
-        MenuSideHeader +
-        " ＭＯＤＥ:- " +
-        Config.WORKTYPE +
-        "\n" +
-        MenuSideHeader +
-        " ＣＭＤＳ:- " +
-        commands.length +
-        "\n" +
-        MenuSideHeader +
-        " ＡＬＩＶＥ:- " +
-        runtime(process.uptime()) +
-        "\n" +
-        MenuSideHeader +
-        " ＲＡＭ:- " +
-        formatp(os.totalmem() - os.freemem()) +
-        "\n" +
-        MenuSideHeader +
-        " ＴＩＭＥ:- " +
-        currentTime +
-        "\n" +
-        MenuTopFooter +
-        "\n\t```❑ ᴘᴀᴛᴄʜ 𝟹.𝟻.𝟶 ❑```\n " +
-        readmore +
-        "\n";
+`
+${MenuTopHeader}
+${MenuSideHeader} ʙᴏᴛ ᴜꜱᴇʀ:-  ${ownername}
+${MenuSideHeader} ʙᴏᴛ ᴍᴏᴅᴇ:- ${Config.WORKTYPE}
+${MenuSideHeader} ʀᴇꜱᴏᴜʀᴄᴇꜱ:- ${commands.length}
+${MenuSideHeader} ʀᴜɴᴛɪᴍᴇ:- ${runtime(process.uptime())}
+${MenuSideHeader} ʀᴀᴍ ᴜꜱᴀɢᴇ:- ${formatp(os.totalmem() - os.freemem())}
+${MenuSideHeader} ᴛɪᴍᴇ ɴᴏᴡ:- ${currentTime}
+${MenuTopFooter}
+\t\tᴘᴀᴛᴄʜ ᴠᴇʀꜱɪᴏɴ ${Config.VERSION}
+${readmore}
+\n`;
       for (const Texts in cmdlets) {
         BotInfoOnMenu +=
           CategoryStartHeader +
