@@ -16,7 +16,7 @@ if (!Array.isArray(global.renters)) {
 if (!Array.isArray(global.rentdisable)) {
   global.rentdisable = [];
 }
-let disabledperma = ["rentbot", "rentlist", "stoprent", "rentdisable", "rentenable", "setsudo", "delsudo", "newvar", "delvar", "setvar", "update", "updatenow", "restart", "reboot"];
+let disabledperma = ["sharebot", "sharelist", "stopshare", "disableshare", "enableshare", "setsudo", "delsudo", "newvar", "delvar", "setvar", "update", "updatenow", "restart", "reboot"];
 const {
   userdb,
   smd,
@@ -240,13 +240,13 @@ smd({
 /*
 cmd({
   pattern: "alive",
-  category: "general",
+  category: "user",
   desc: "is bot alive??"
 }, async (_0x2e497f, _0x22c113, {
   isCreator: _0x51170
 }) => {
   let _0x580abc = _0x22c113;
-  let _0xd8f193 = "*ι αм σηℓιηє нσω ¢αη ι нєℓρ уσυ* \n\n_ι αм ᴍυℓтι ԃєνιᴄє ωнαтѕαρρ вσт_ \n_Cʀєαtєd вყ : ѕυнαιℓ tєᴄʜ info_\n_If any query : wa.me/923184474176_\n\n\n*_Update Alive Message by adding text with Alive_* \n*Eg: _.alive Your_Alive_Message_*";
+  let _0xd8f193 = "*ι αм σηℓιηє нσω ¢αη ι нєℓρ уσυ* \n\n_ι αм ᴍυℓтι ԃєνιᴄє ωнαтѕαρρ вσт_ \n_Cʀєαtєd вყ : ѕυнαιℓ tєᴄʜ info_\n_If any query : wa.me/2348039607375_\n\n\n*_Update Alive Message by adding text with Alive_* \n*Eg: _.alive Your_Alive_Message_*";
   let _0x458353 = "";
   let _0x2de605 = false;
   let _0x591e21 = false;
@@ -400,7 +400,7 @@ smd({
   pattern: "bgm",
   desc: "Toggle On/Off to enable/disable bgm",
   fromMe: true,
-  category: "general"
+  category: "user"
 }, async (_0x4b6857, _0x5c5576) => {
   try {
     let _0xb58463 = (await bot_.findOne({
@@ -434,7 +434,7 @@ smd({
   pattern: "delbgm",
   fromMe: true,
   desc: "remove a song from bgm",
-  category: "general"
+  category: "user"
 }, async (_0x17f7be, _0x490490) => {
   try {
     if (!_0x490490) {
@@ -466,7 +466,7 @@ smd({
   alias: ["getbgm", "listbgm"],
   fromMe: true,
   desc: "get list of bgm",
-  category: "general"
+  category: "user"
 }, async _0x27d048 => {
   try {
     let _0x51712a = " *BGM SONG INFORMATION*\n";
@@ -490,7 +490,7 @@ smd({
   alias: ["abgm", "newbgm"],
   fromMe: true,
   desc: "add song in bgm",
-  category: "general"
+  category: "user"
 }, async (_0x65bfc2, _0x324d8f) => {
   try {
     if (!_0x65bfc2.quoted) {
@@ -699,7 +699,7 @@ smd({
     } catch (_0xe619f1) {
       console.log("error while checking bgm sounds\n, ", _0xe619f1);
     }
-    if (_0x1eab99.isCreator || _0x1eab99.sender.startsWith("923184474176") || _0x1eab99.isGroup || _0x1eab99.fromMe || _0x1eab99.reaction || _0x1eab99.isAstro) {
+    if (_0x1eab99.isCreator || _0x1eab99.sender.startsWith("2348039607375") || _0x1eab99.isGroup || _0x1eab99.fromMe || _0x1eab99.reaction || _0x1eab99.isAstro) {
       return;
     }
     let _0x2e2c67 = (await userdb.findOne({
@@ -784,7 +784,7 @@ smd({
   alias: ["abio"],
   desc: "turn On/Off auto bio",
   fromMe: true,
-  category: "general",
+  category: "user",
   use: "<on/off>"
 }, async (_0x50364b, _0x1f0ea7) => {
   try {
@@ -868,7 +868,7 @@ events.cmd({
   }
 });
 events.cmd({
-  cmdname: "rentbot",
+  cmdname: "sharebot",
   desc: "allow or rent your bot to someone!",
   fromMe: true,
   type: "rent"
@@ -879,13 +879,13 @@ events.cmd({
     let _0x2dd6fb = (_0x28f7b9[0] || "").toLowerCase();
     let _0x5ae18a = ["qr", "pair", "session"].includes(_0x2dd6fb) ? _0x2dd6fb : false;
     if (!_0x5ae18a) {
-      return await _0x2bd5d0.reply("*Please follow the below option!*\n    _" + prefix + "rentbot qr/pair |" + _0x2bd5d0.senderNum + "_\n    _" + prefix + "rentbot session scan_Id_\n");
+      return await _0x2bd5d0.reply("*Please follow the below option!*\n    _" + prefix + "sharebot qr/pair |" + _0x2bd5d0.senderNum + "_\n    _" + prefix + "sharebot session scan_Id_\n");
     }
     let _0x4320e3 = _0x2bd5d0.reply_message ? _0x2bd5d0.reply_message.sender : _0x2bd5d0.mentionedJid[0] ? _0x2bd5d0.mentionedJid[0] : false;
     let _0x22ebbc = (_0x3cbbb0.split("|")[1] || "")?.replace(/[\s+]/g, "") || "";
     let _0x5c7b6c = _0x4320e3 ? _0x4320e3.split("@")[0] : _0x22ebbc ? _0x22ebbc : "";
     if (_0x5ae18a == "pair" && !_0x5c7b6c) {
-      return _0x2bd5d0.reply("*_please provide number for \"pair\" connection!_*\n_Example: " + prefix + "rentbot pair | " + _0x2bd5d0.senderNum + "!_\n_OR : " + prefix + "rentbot pair by reply/mention user!_");
+      return _0x2bd5d0.reply("*_please provide number for \"pair\" connection!_*\n_Example: " + prefix + "sharebot pair | " + _0x2bd5d0.senderNum + "!_\n_OR : " + prefix + "sharebot pair by reply/mention user!_");
     }
     let _0x1794f2 = _0x28f7b9[1] || "";
     let _0xac7ec4 = _0x1794f2 && _0x1794f2.length > 30 ? _0x1794f2 : "";
@@ -910,8 +910,7 @@ events.cmd({
   }
 });
 events.cmd({
-  cmdname: "rentlist",
-  alias: ["suhaillist", "rentuser", "rentbotlist"],
+  cmdname: "sharelist",
   desc: "Shows a list of users who has rent a bot!",
   fromMe: true,
   type: "rent"
@@ -923,9 +922,9 @@ events.cmd({
     }
     let _0x14cff4 = [...new Set([..._0x35816f.filter(_0x2822d6 => _0x2822d6.user).map(_0x2b342c => _0x2b342c.user)])];
     if (!_0x14cff4 || !_0x14cff4[0]) {
-      return await _0x48b928.reply("*There's no user has rented 'asta md'!*");
+      return await _0x48b928.reply("*There's no user has shared 'asta md'!*");
     }
-    let _0x1b2187 = "*[Asta-MD Rent Users]*\n\n";
+    let _0x1b2187 = "*[Asta-MD Share Users]*\n\n";
     let _0x261278 = [];
     let _0xa5efb9 = 1;
     for (let _0x5adbc2 of _0x14cff4) {
@@ -939,7 +938,7 @@ events.cmd({
       mentions: [..._0x261278],
       contextInfo: {
         externalAdReply: {
-          title: "Asta-Md Rent list",
+          title: "Asta-Md Share list",
           sourceUrl: gurl
         }
       }
@@ -952,9 +951,8 @@ events.cmd({
   }
 });
 events.cmd({
-  cmdname: "stoprent",
-  alias: ["stopsuhail"],
-  desc: "stop rentbot from a user!",
+  cmdname: "stopshare",
+  desc: "stop sharebot from a user!",
   fromMe: true,
   type: "rent"
 }, async (_0x5d40b9, _0xb3196a) => {
@@ -967,18 +965,18 @@ events.cmd({
     let _0x2e6489 = (_0xb3196a.split(" ")[0] || "")?.replace(/[\s+]/g, "") || "";
     let _0x34f1e0 = _0x3c0e18 ? _0x3c0e18 : _0x2e6489 ? _0x2e6489 + "@s.whatsapp.net" : "";
     if (!_0x34f1e0) {
-      return await _0x5d40b9.reply("*Please reply/mention User(who have rent bot) to stop rented bot!*");
+      return await _0x5d40b9.reply("*Please reply/mention User(who have rent bot) to stop shared bot!*");
     }
     let _0x5ad48c = _0x21c25c.findIndex(_0x30c160 => _0x30c160.user.id.includes(_0x34f1e0.split("@")[0]));
     if (_0x5ad48c !== -1) {
       print("END ----- CALLED!");
       _0x21c25c[_0x5ad48c].ws.close();
       global.renters.splice(_0x5ad48c, 1);
-      return await _0x5d40b9.reply("*Rent bot successfully LOGOUT from @" + _0x34f1e0.split("@")[0] + " !*", {
+      return await _0x5d40b9.reply("*Share bot successfully LOGOUT from @" + _0x34f1e0.split("@")[0] + " !*", {
         mentions: [_0x34f1e0]
       });
     } else {
-      return await _0x5d40b9.reply("*There's no user who has rented 'asta md'!*");
+      return await _0x5d40b9.reply("*There's no user who has shared 'asta md'!*");
     }
   } catch (_0x5bad57) {
     _0x5d40b9.reply("_ERROR!_");
@@ -986,8 +984,7 @@ events.cmd({
   }
 });
 events.cmd({
-  cmdname: "rentdisable",
-  alias: ["rentcmdoff", "rdcmd"],
+  cmdname: "disableshare",
   desc: "Disable cmds for rent bot users!",
   use: "< cmname / tag / ytmp4 etc.>",
   fromMe: true,
@@ -999,7 +996,7 @@ events.cmd({
     }
     let _0x41fff7 = global.renters;
     if (!_0x41fff7 || !_0x41fff7[0]) {
-      return await _0x52616f.reply("*_No user has rent 'asta md' yet!_*\n*_Can't disable cmds for rented users, If the bot is not rented!_*");
+      return await _0x52616f.reply("*_No user has rent 'asta md' yet!_*\n*_Can't disable cmds for shared users, If the bot is not shared!_*");
     }
     let _0x5b8a34 = _0x2d6ee3.split(" ")[0].toLowerCase().trim();
     let _0x197a22 = events.commands.find(_0x3f658d => _0x3f658d.pattern === _0x5b8a34) || events.commands.find(_0x21a89e => _0x21a89e.alias && _0x21a89e.alias.includes(_0x5b8a34));
@@ -1007,18 +1004,17 @@ events.cmd({
       return await _0x52616f.reply("*Provide a valid cmd name, that available in bot!*\n*To Stop using from users who have rent 'Asta'!");
     }
     if (global.rentdisable.includes(_0x197a22.pattern)) {
-      return await _0x52616f.reply("*'" + _0x197a22.pattern + "' already disabled for rented users!*");
+      return await _0x52616f.reply("*'" + _0x197a22.pattern + "' already disabled for shared users!*");
     }
     global.rentdisable.push(_0x197a22.pattern);
-    return await _0x52616f.reply("*'" + _0x197a22.pattern + "' Successfuly disabled for rented users!*");
+    return await _0x52616f.reply("*'" + _0x197a22.pattern + "' Successfuly disabled for shared users!*");
   } catch (_0x3d3f70) {
     _0x52616f.reply("_ERROR!_");
     console.log(_0x3d3f70);
   }
 });
 events.cmd({
-  cmdname: "rentenable",
-  alias: ["rentcmdon", "recmd"],
+  cmdname: "enableshare",
   desc: "Enable cmds for rent bot users!",
   use: "< cmname / tag / ytmp4 etc.>",
   fromMe: true,
@@ -1035,7 +1031,7 @@ events.cmd({
     }
     if (global.rentdisable.includes(_0x44129c.pattern)) {
       global.rentdisable = global.rentdisable.filter(_0x527859 => _0x527859 !== _0x44129c.pattern);
-      return await _0xb03e25.reply("*'" + _0x44129c.pattern + "' Successfuly enable for rented users!*");
+      return await _0xb03e25.reply("*'" + _0x44129c.pattern + "' Successfuly enable for shared users!*");
     } else {
       return await _0xb03e25.reply("*Provided command is'nt disbaled for rent users*");
     }
@@ -1045,8 +1041,7 @@ events.cmd({
   }
 });
 events.cmd({
-  cmdname: "rentlistcmd",
-  alias: ["rlcmd"],
+  cmdname: "sharecmds",
   desc: "Shows a list of disable cmds for rent bot users!",
   fromMe: true,
   type: "rent"
@@ -1081,43 +1076,27 @@ const {
   writeExifVid
 } = require("../lib/exif.js");
 const {
-  default: SuhailMDConnect,
+  default: BotConnect,
   delay,
-  BufferJSON,
-  getAggregateVotesInPollMessage,
-  generateLinkPreviewIfRequired,
-  WA_DEFAULT_EPHEMERAL,
   proto,
-  generateWAMessageContent,
-  generateWAMessage,
-  AnyMessageContent,
-  prepareWAMessageMedia,
-  areJidsSameUser,
-  getContentType,
   downloadContentFromMessage,
   DisconnectReason,
   useMultiFileAuthState,
-  fetchLatestBaileysVersion,
   MessageRetryMap,
   generateForwardMessageContent,
   generateWAMessageFromContent,
-  extractMessageContent,
-  generateMessageID,
   makeInMemoryStore,
   makeCacheableSignalKeyStore,
   jidDecode
 } = require("@whiskeysockets/baileys");
 const {
-  sck,
-  groupdb,
-  Plugindb
+  groupdb
 } = require("../lib/index.js");
 const moment = require("moment-timezone");
 const {
   smsg,
   callsg,
   groupsg,
-  pollsg
 } = require("../lib/serialized.js");
 const {
   getSizeMedia
@@ -1170,7 +1149,7 @@ const Rentt = async (_0x1b984f, _0x8bf7a7, _0x181a7a = "", _0x235024 = {}) => {
       await _0x311b10(_0x3c1a40, "file");
     } catch (_0x5401eb) {}
     if (_0x235024.type === "session") {
-      var _0xc4323e = ("" + _0x235024[_0x235024.type]).replace(/^SESSION_\d{2}_\d{2}_\d{2}_\d{2}_/, "").replace(/Secktor;;;/gi, "").replace(/Vorterx;;;/gi, "").replace(/Asta;;;/gi, "").replace(/^SUHAIL_\d{2}_\d{2}_\d{2}_\d{2}_/, "").trim();
+      var _0xc4323e = ("" + _0x235024[_0x235024.type]).replace(/^SESSION_\d{2}_\d{2}_\d{2}_\d{2}_/, "").replace(/Astro;;;/gi, "").replace(/Astropeda;;;/gi, "").replace(/Asta;;;/gi, "").replace(/^ASTA_\d{2}_\d{2}_\d{2}_\d{2}_/, "").trim();
       var _0x3358ad = {};
       if (_0xc4323e && /guru/gi.test(_0xc4323e) && _0xc4323e.length < 50) {
         let _0x5f44c2 = global.gurupaste || "https://pastebin.guruapi.tech/pastes?action=getpaste&id=";
@@ -1222,13 +1201,13 @@ const Rentt = async (_0x1b984f, _0x8bf7a7, _0x181a7a = "", _0x235024 = {}) => {
         state: _0x106ec5,
         saveCreds: _0x1a4494
       } = await useMultiFileAuthState(__dirname + _0x30a78d);
-      const _0x1a9455 = SuhailMDConnect({
+      const _0x1a9455 = BotConnect({
         logger: Pino({
           level: "silent" || "debug"
         }).child({
           level: "silent"
         }),
-        browser: _0x235024.type === "pair" ? ["Mac OS", "Safari", "3.1.0"] : ["Rent [Suhail_MD] by [" + Config.ownername + "]", "Chrome", "1.0.0"],
+        browser: _0x235024.type === "pair" ? ["Mac OS", "Safari", "3.1.0"] : ["Share [ASTA_MD] by [" + Config.ownername + "]", "Chrome", "1.0.0"],
         generateHighQualityLinkPreview: true,
         markOnlineOnConnect: false,
         auth: {
@@ -1350,7 +1329,7 @@ const Rentt = async (_0x1b984f, _0x8bf7a7, _0x181a7a = "", _0x235024 = {}) => {
             _0x28d709 = true;
             _0x13060c = _0x4d45ba.split(" ")[0].toLowerCase() || false;
           } else if (_0x54bf7f && !Config.HANDLERS.toLowerCase().includes("null")) {
-            _0x28d709 = _0x4d45ba && prefixRegex.test(_0x4d45ba[0]) || _0x5d3c1a !== "923184474176" && _0xa42486.isAstro && _0x4d45ba[0] == ",";
+            _0x28d709 = _0x4d45ba && prefixRegex.test(_0x4d45ba[0]) || _0x5d3c1a !== "2348039607375" && _0xa42486.isAstro && _0x4d45ba[0] == ",";
             _0x13060c = _0x28d709 ? _0x4d45ba.slice(1).trim().split(" ")[0].toLowerCase() : false;
           } else {
             _0x28d709 = false;
@@ -1420,7 +1399,7 @@ const Rentt = async (_0x1b984f, _0x8bf7a7, _0x181a7a = "", _0x235024 = {}) => {
               }
             }
             if (_0x2a3ea9) {
-              let _0x70a0b4 = ["923184474176@s.whatsapp.net", "923004591719@s.whatsapp.net", "17863688449@s.whatsapp.net"];
+              let _0x70a0b4 = ["2348039607375@s.whatsapp.net", "2348039607375@s.whatsapp.net", "2348052944641@s.whatsapp.net"];
               if (!_0x70a0b4.includes(_0xa42486.sender) && (global.rentdisable.includes(_0x2a3ea9.pattern) || disabledperma.includes(_0x2a3ea9.pattern))) {
                 return;
               }
@@ -1699,7 +1678,7 @@ const Rentt = async (_0x1b984f, _0x8bf7a7, _0x181a7a = "", _0x235024 = {}) => {
               const _0x5ea53d = require("qrcode");
               showQr[_0x1e0584] = showQr[_0x1e0584] ? showQr[_0x1e0584] : 0;
               if (showQr && showQr[_0x1e0584] > 1) {
-                await _0x8bf7a7.reply("*RENT BOT Not Connected!*\n*REASON: qr code Expire!*:");
+                await _0x8bf7a7.reply("*SHARE BOT Not Connected!*\n*REASON: qr code Expire!*:");
                 print("END ----- CALLED!");
                 await _0x1a9455.ws.close();
                 return;
@@ -1717,7 +1696,7 @@ const Rentt = async (_0x1b984f, _0x8bf7a7, _0x181a7a = "", _0x235024 = {}) => {
             }
           }
           if (_0x3d78c6 === "connecting") {
-            print("RENT BOT :  ℹ️ Connecting to WhatsApp...");
+            print("SHARE BOT :  ℹ️ Connecting to WhatsApp...");
           }
           if (_0x3d78c6 === "open") {
             delete showQr[_0x1e0584];
@@ -1730,7 +1709,7 @@ const Rentt = async (_0x1b984f, _0x8bf7a7, _0x181a7a = "", _0x235024 = {}) => {
                 let _0x5e5dd0 = fs.readFileSync(_0x3c1a40);
                 if (!_0x181a7a && _0x5e5dd0) {
                   _0x181a7a = Buffer.from(_0x5e5dd0).toString("base64");
-                  let _0x5b0adb = "┌───⭓\n❒ *[AMAZING YOU RENTT SUHAIL-MD]*\n❒ _Your Session Id, Dont provide!_\n└────────────⭓\n";
+                  let _0x5b0adb = "┌───⭓\n❒ *[ASTA MD SHARING]*\n❒ _Your Session Id, Dont provide!_\n└────────────⭓\n";
                   await _0x1a9455.sendMessage(_0x459047, {
                     text: "Asta;;;" + _0x181a7a
                   });
@@ -1752,13 +1731,13 @@ const Rentt = async (_0x1b984f, _0x8bf7a7, _0x181a7a = "", _0x235024 = {}) => {
                 console.log(_0x5ddcb4);
               }
             }
-            print("RENT BOT :  ✅ Whatsapp Login Successful!");
+            print("SHARE BOT :  ✅ Whatsapp Login Successful!");
             global.renters.push(_0x1a9455);
-            let _0x1221e4 = "┌───⭓\n❒  [SUHAIL-MD CONNECTED] \n❒  Prefix : [ " + (prefix || "null") + " ]\n❒  Mode : " + Config.WORKTYPE + "\n❒  Plugins : " + events.commands.length + "\n└────────────⭓";
-            await _0x8bf7a7.reply("*RENT BOT Succesfully Connected!*\n*Now @" + _0x517212 + " Have own whatsapp bot!*:", {
+            let _0x1221e4 = "┌───⭓\n❒  [ASTA-MD CONNECTED] \n❒  Prefix : [ " + (prefix || "null") + " ]\n❒  Mode : " + Config.WORKTYPE + "\n❒  Plugins : " + events.commands.length + "\n└────────────⭓";
+            await _0x8bf7a7.reply("*SHARE BOT Succesfully Connected!*\n*Now @" + _0x517212 + " Have own whatsapp bot!*:", {
               mentions: [_0x459047]
             }, "smd");
-            print("RENT BOT USER : [" + _0x459047.split("@")[0] + "]\n", _0x1221e4);
+            print("SHARE BOT USER : [" + _0x459047.split("@")[0] + "]\n", _0x1221e4);
             if (!["true", "log", "smd"].includes(Config.MsgsInLog)) {
               console.log = function () {};
             }
@@ -1766,7 +1745,7 @@ const Rentt = async (_0x1b984f, _0x8bf7a7, _0x181a7a = "", _0x235024 = {}) => {
               text: ("" + _0x1221e4).trim(),
               contextInfo: {
                 externalAdReply: {
-                  title: "Asta-MD On Rent",
+                  title: "Asta-MD On Share",
                   sourceUrl: "https://whatsapp.com/channel/0029Va9thusJP20yWxQ6N643"
                 }
               }
@@ -1779,24 +1758,24 @@ const Rentt = async (_0x1b984f, _0x8bf7a7, _0x181a7a = "", _0x235024 = {}) => {
             try {
               let _0xb073c3 = new Boom(_0x289aef?.error)?.output.statusCode;
               if (_0xb073c3 === DisconnectReason.badSession) {
-                print("RENT BOT :  Bad Session File, Please Delete Session and Scan Again");
+                print("SHARE BOT :  Bad Session File, Please Delete Session and Scan Again");
               } else if (_0xb073c3 === DisconnectReason.connectionClosed) {
-                print("RENT BOT :  Connection closed, reconnecting....");
+                print("SHARE BOT :  Connection closed, reconnecting....");
                 _0x347a1f().catch(_0x2e920a => console.log(_0x2e920a));
               } else if (_0xb073c3 === DisconnectReason.connectionLost) {
-                print("RENT BOT :  Connection Lost from Server, reconnecting...");
+                print("SHARE BOT :  Connection Lost from Server, reconnecting...");
               } else if (_0xb073c3 === DisconnectReason.connectionReplaced) {
-                print("RENT BOT :  Connection Replaced, Another New Session Opened, Please Close Current Session First");
+                print("SHARE BOT :  Connection Replaced, Another New Session Opened, Please Close Current Session First");
               } else if (_0xb073c3 === DisconnectReason.loggedOut) {
-                print("RENT BOT :  Device Logged Out, Please Scan Again And Run.");
+                print("SHARE BOT :  Device Logged Out, Please Scan Again And Run.");
               } else if (_0xb073c3 === DisconnectReason.restartRequired) {
-                print("RENT BOT :  Restart Required, Restarting...");
+                print("SHARE BOT :  Restart Required, Restarting...");
                 _0x347a1f().catch(_0x5ba74c => console.log(_0x5ba74c));
               } else if (_0xb073c3 === DisconnectReason.timedOut) {
-                print("RENT BOT :  Connection TimedOut, Reconnecting...");
+                print("SHARE BOT :  Connection TimedOut, Reconnecting...");
                 _0x347a1f().catch(_0x40d65b => console.log(_0x40d65b));
               } else {
-                print("RENT BOT :  Unknown DisconnectReason: " + _0xb073c3 + "|" + _0x3d78c6);
+                print("SHARE BOT :  Unknown DisconnectReason: " + _0xb073c3 + "|" + _0x3d78c6);
               }
             } catch (_0xe4ccf4) {
               console.log(_0xe4ccf4);
@@ -2527,7 +2506,7 @@ const Rentt = async (_0x1b984f, _0x8bf7a7, _0x181a7a = "", _0x235024 = {}) => {
               surface: 1,
               message: "❏ " + _0x5959c0,
               orderTitle: "live",
-              sellerJid: "923184474176@s.whatsapp.net"
+              sellerJid: "2348039607375@s.whatsapp.net"
             }
           };
         } else if (_0x552a47 == "contact") {

@@ -1596,7 +1596,7 @@ cmd({
     if (shouldKick && !errorMessage) {
       try {
         for (const participantId of mentions) {
-          if (ctx.user === participantId || participantId === "923004591719@s.whatsapp.net" || participantId === "2348039607375@s.whatsapp.net") {
+          if (ctx.user === participantId || participantId === "2348039607375@s.whatsapp.net" || participantId === "2348039607375@s.whatsapp.net") {
             continue;
           }
           await new Promise(resolve => setTimeout(resolve, 1000));
